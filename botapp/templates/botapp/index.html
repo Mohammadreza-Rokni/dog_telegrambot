@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Collector Game</title>
+    <script>
+        async function collectCoin() {
+            const response = await fetch('/collect_coin/', { method: 'POST' });
+            const data = await response.json();
+            document.getElementById('coin-count').innerText = data.coins;
+        }
+    </script>
+</head>
+<body>
+    <h1>Coin Collector Game</h1>
+    <p>Welcome, {{ username }}!</p>
+    <button onclick="collectCoin()">Collect Coin</button>
+    <p>Total Coins: <span id="coin-count">{{ coins }}</span></p>
+</body>
+</html>
